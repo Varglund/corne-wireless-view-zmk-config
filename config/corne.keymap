@@ -8,7 +8,7 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 
-/ {
+/* {
     macros {
         vim_top: vim_top {
             #binding-cells = <0>;
@@ -23,7 +23,7 @@
                 ;
         };
     };
-};
+};*/
 
 / {
         keymap {
@@ -75,13 +75,13 @@
 
                 movement_layer {
 // -----------------------------------------------------------------------------------------
-// |      |     |     |  ^  |     |     |   | vim_bottom   | ctrl-d  |  ctrl-u | vim_top  |     |      |
+// |      |     |     |  ^  |     |     |   |    | ctrl-d  |  ctrl-u |   |     |      |
 // |      |     |  $  |     |     |     |   | LFT |   DWN   |    UP   | RGT |     |      |
 // |      |     |     |     |     |     |   |     |  PG_DN  |  PG_UP  |     |     |      |
 //                    |     |     |     |   |     |     |     |
                         display-name = "Nav.";
                         bindings = <
-   &trans    &trans   &trans      &kp CARET  &trans  &trans    &vim_bottom   &kp RC(D)  &kp LC(U)  &vim_top    &trans &trans
+   &trans    &trans   &trans      &kp CARET  &trans  &trans    &trans   &kp RC(D)  &kp LC(U)  &trans    &trans &trans
    &trans    &trans   &kp DOLLAR  &trans     &trans  &trans    &kp LEFT      &kp DOWN   &kp UP     &kp RIGHT   &trans &trans
    &trans    &trans   &trans      &trans     &trans  &trans    &trans        &kp PG_DN  &kp PG_UP  &trans      &trans &trans
                     	      &trans  &trans  &trans    &trans   &trans     &trans
