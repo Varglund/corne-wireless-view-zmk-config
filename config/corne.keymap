@@ -11,9 +11,11 @@
 / {
     macros {
         vim_top: vim_top {
+            #binding-cells = <0>;
             bindings = <&macro_tap &kp G &kp G> ;
         };
         vim_bottom: vim_bottom {
+            #binding-cells = <0>;
             bindings
                 = <&macro_press &kp LSHFT>
                 , <&macro_tap &kp G>
