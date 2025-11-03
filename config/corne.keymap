@@ -36,6 +36,28 @@
             bindings = <&mo>, <&kp>;
             display-name = "Layer-Tap";
         };
+        hml: home_row_mod_left {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            require-prior-idle-ms = <150>;
+            tapping-term-ms = <280>;
+            quick-tap-ms = <175>;
+            bindings = <&kp>, <&kp>;
+            hold-trigger-key-positions = <7 8 9 10 11 12 19 20 21 22 23 24 31 32 33 34 35 36 40 41 42>; // List of keys on the right side of the keyboard
+            hold-trigger-on-release;
+        };
+        hmr: home_row_mod_right {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            require-prior-idle-ms = <150>;
+            tapping-term-ms = <280>;
+            quick-tap-ms = <175>;
+            bindings = <&kp>, <&kp>;
+            hold-trigger-key-positions = <1 2 3 4 5 6 13 14 15 16 17 18 25 26 27 28 29 30 37 38 39>; // List of keys on the left side of the keyboard
+            hold-trigger-on-release;
+        };
     };
 };
 
@@ -62,23 +84,23 @@
                         display-name = "Base";
                         bindings = <
    &kp ESC   &kp Q        &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &kp P           &kp BSPC
-   &kp TAB   &mt LSHIFT A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &mt RSHIFT SEMI &kp SQT
+   &kp TAB   &hml LSHIFT A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &hml RSHIFT SEMI &kp SQT
    &kp CAPS &mt LCTRL Z   &kp X &kp C &kp V &kp B   &kp N &kp M  &kp COMMA &kp DOT &mt RCTRL MINUS &kp DEL
-                           &kp LGUI &mo 1 &kp RET   &lt 3 SPACE &mo 2 &kp RALT
+                           &kp LGUI &mo 1 &kp RET   &kp SPACE &mo 2 &kp RALT
                         >;
                 };
                 lower_layer {
 // -----------------------------------------------------------------------------------------
-// |  TAB | BT1 | BT2  | BT3  | BT4 | BT5 |   | "|" |  7  |  8  |  9  |  -  |      |
-// | BTCLR|     |  <   |  >   |     |     |   |  /  |  4  |  5  |  6  |  =  |  ~   |
+// |  TAB | BT1 | BT2  | BT3  | BT4 | BT5 |   |  /  |  7  |  8  |  9  |  -  |      |
+// | BTCLR|     |  <   |  >   |     |     |   |  .  |  4  |  5  |  6  |  =  |  ~   |
 // | SHFT |     |      |      |     |     |   |  *  |  1  |  2  |  3  |  +  |      |
-//                    | GUI |     | ENT |   | SPC |  0  |  .  |
+//                    | GUI |     | ENT |   | SPC |     |  0  |
                         display-name = "Numbers";
                         bindings = <
-   &bt BT_CLR    &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4   &kp PIPE  &kp N7  &kp N8  &kp N9  &kp MINUS &trans
-   &kp TAB &trans &kp LT   &kp GT &trans &trans   &kp SLASH &kp N4  &kp N5  &kp N6  &kp EQUAL  &kp TILDE
+   &bt BT_CLR    &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4   &kp SLASH  &kp N7  &kp N8  &kp N9  &kp MINUS &trans
+   &kp TAB &trans &kp LT   &kp GT &trans &trans   &kp DOT &kp N4  &kp N5  &kp N6  &kp EQUAL  &kp TILDE
    &trans  &trans       &trans   &trans   &trans   &trans         &kp STAR  &kp N1  &kp N2  &kp N3  &kp PLUS &trans
-                          	        &trans       &trans       &trans         &trans    &kp N0   &kp DOT
+                          	        &trans       &trans       &trans         &trans    &trans   &kp N0
                         >;
                 };
 
@@ -101,13 +123,13 @@
 // -----------------------------------------------------------------------------------------
 // |      |     |     |  ^  |     |     |   |    | ctrl-d  |  ctrl-u |   |     |      |
 // |      |     |  $  |     |     |     |   | LFT |   DWN   |    UP   | RGT |     |      |
-// |      |     |     |     |     |     |   |     |  PG_DN  |  PG_UP  |     |     |      |
+// |      |     |     |     |     |     |   | HOME |  PG_DN  |  PG_UP  | END |     |      |
 //                    |     |     |     |   |     |     |     |
                         display-name = "Nav.";
                         bindings = <
    &trans    &trans   &trans      &kp CARET  &trans  &trans    &trans   &kp RC(D)  &kp LC(U)  &trans    &trans &trans
    &trans    &trans   &kp DOLLAR  &trans     &trans  &trans    &kp LEFT      &kp DOWN   &kp UP     &kp RIGHT   &trans &trans
-   &trans    &trans   &trans      &trans     &trans  &trans    &trans        &kp PG_DN  &kp PG_UP  &trans      &trans &trans
+   &trans    &trans   &trans      &trans     &trans  &trans    &kp HOME      &kp PG_DN  &kp PG_UP  &kp END      &trans &trans
                     	      &trans  &trans  &trans    &trans   &trans     &trans
                         >;
                 };
