@@ -11,6 +11,18 @@
 
 / {
     behaviors {
+        tog_on: toggle_layer_on_only {
+            compatible = "zmk,behavior-toggle-layer";
+            #binding-cells = <1>;
+            display-name = "Toggle Layer On";
+            toggle-mode = "on";
+        };
+        tog_off: toggle_layer_on_only {
+            compatible = "zmk,behavior-toggle-layer";
+            #binding-cells = <1>;
+            display-name = "Toggle Layer Off";
+            toggle-mode = "off";
+        };
         hml: home_row_mod_left {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -32,6 +44,27 @@
             bindings = <&kp>, <&kp>;
             hold-trigger-key-positions = <1 2 3 4 5 6 12 13 14 15 16 17 18 25 26 27 28 29 30 36 37 38 39 40 41 42>; // List of keys on the left side of the keyboard
             hold-trigger-on-release;
+        };
+    };
+};
+
+/ {
+    macros {
+        toggle_mac: toggle_mac {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&tog_on 1>
+                , <&tog_off 0>
+                ;
+        };
+        toggle_win: toggle_win {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&tog_on 0>
+                , <&tog_off 1>
+                ;
         };
     };
 };
@@ -66,16 +99,16 @@
                 };
                 default_layer_macos {
 // -----------------------------------------------------------------------------------------
-// |    |                |    |    |    |    |      |    |    |    |    |                 |    |
-// |    |                |    |    |    |    |      |    |    |    |    |                 |    |
-// |    |  Z LGUI(hold)  |    |    |    |    |      |    |    |    |    |  - RGUI(hold)   |    |
-//                       |  LCTRL  |    |    |      |    |    |  RCTRL  |
+// | ESC   |   Q LALT (hold) |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P RALT (hold)  | BSPC |
+// | TAB   |  A LSHIFT(hold) |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ; RSHIFT(hold) |  '   |
+// | CAPS  |  Z LGUI(hold)   |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  - RGUI(hold)   | DEL  |
+//                       |  LCTRL  | LWR | ENT |   | SPC (Hold for layer 3) | RSE  |  RCTRL  |
                         display-name = "MacOS";
                         bindings = <
-   &trans  &trans      &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans            &trans
-   &trans  &trans      &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &trans            &trans
-   &trans  &hml LGUI Z &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans  &hmr RGUI MINUS   &trans
-                              &kp LCTRL &trans &trans      &trans  &trans  &kp RCTRL
+   &kp ESC   &hml LALT Q   &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &hmr RALT P      &kp BSPC
+   &kp TAB   &hml LSHIFT A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &hmr RSHIFT SEMI &kp SQT
+   &kp CAPS  &hml LGUI Z &kp X &kp C &kp V &kp B   &kp N &kp M  &kp COMMA &kp DOT &hmr RGUI MINUS   &kp DEL
+                              &kp LCTRL &mo 2 &kp RET   &kp SPACE &mo 3  &kp RCTRL
                         >;
                 };
                 lower_layer {
@@ -86,9 +119,9 @@
 //                    | GUI |     | ENT |   | SPC |     |  0  |
                         display-name = "Numbers";
                         bindings = <
-   &trans &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4   &kp SLASH &kp N7  &kp N8  &kp N9  &kp MINUS &trans
-   &trans     &trans       &kp LT       &kp GT       &kp TILDE    &to 0         &kp DOT   &kp N4  &kp N5  &kp N6  &kp EQUAL &kp GRAVE
-   &trans     &bt BT_CLR       &trans       &trans       &trans       &to 1         &kp STAR  &kp N1  &kp N2  &kp N3  &kp PLUS  &trans
+   &trans &bt BT_SEL 0    &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4   &kp SLASH &kp N7  &kp N8  &kp N9  &kp MINUS &trans
+   &trans     &trans      &kp LT       &kp GT       &kp TILDE    &toggle_win    &kp DOT   &kp N4  &kp N5  &kp N6  &kp EQUAL &kp GRAVE
+   &trans     &bt BT_CLR  &trans       &trans       &trans       &toggle_mac    &kp STAR  &kp N1  &kp N2  &kp N3  &kp PLUS  &trans
                           	        &trans       &trans       &trans         &trans    &trans   &kp N0
                         >;
                 };
