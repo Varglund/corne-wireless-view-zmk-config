@@ -45,6 +45,14 @@
             hold-trigger-key-positions = <1 2 3 4 5 6 12 13 14 15 16 17 18 25 26 27 28 29 30 36 37 38 39 40 41 42>; // List of keys on the left side of the keyboard
             hold-trigger-on-release;
         };
+        hmt: home_row_mod_tap {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <160>;
+            quick-tap-ms = <175>;
+            bindings = <&kp>, <&kp>;
+        };
     };
 };
 
@@ -91,9 +99,9 @@
 //                      | GUI | LWR | ENT |   | SPC (Hold for layer 3) | RSE  | ALT |
                         display-name = "Windows";
                         bindings = <
-   &kp ESC   &hml LALT Q   &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &hmr RALT P      &kp BSPC
-   &kp TAB   &hml LSHIFT A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &hmr RSHIFT SEMI &kp SQT
-   &kp CAPS  &hml LCTRL Z  &kp X &kp C &kp V &kp B   &kp N &kp M  &kp COMMA &kp DOT &hmr RCTRL MINUS &kp DEL
+   &kp ESC   &hmt LALT Q   &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &hmt RALT P      &kp BSPC
+   &kp TAB   &hmt LSHIFT A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &hmt RSHIFT SEMI &kp SQT
+   &kp CAPS  &hmt LCTRL Z  &kp X &kp C &kp V &kp B   &kp N &kp M  &kp COMMA &kp DOT &hmt RCTRL MINUS &kp DEL
                            &kp LGUI &mo 2 &kp RET   &kp SPACE &mo 3 &kp RALT
                         >;
                 };
@@ -105,9 +113,9 @@
 //                       |  LCTRL  | LWR | ENT |   | SPC (Hold for layer 3) | RSE  |  RCTRL  |
                         display-name = "MacOS";
                         bindings = <
-   &kp ESC   &hml LALT Q   &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &hmr RALT P      &kp BSPC
-   &kp TAB   &hml LSHIFT A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &hmr RSHIFT SEMI &kp SQT
-   &kp CAPS  &hml LGUI Z &kp X &kp C &kp V &kp B   &kp N &kp M  &kp COMMA &kp DOT &hmr RGUI MINUS   &kp DEL
+   &kp ESC   &hmt LALT Q   &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &hmt RALT P      &kp BSPC
+   &kp TAB   &hmt LSHIFT A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &hmt RSHIFT SEMI &kp SQT
+   &kp CAPS  &hmt LGUI Z &kp X &kp C &kp V &kp B   &kp N &kp M  &kp COMMA &kp DOT &hmt RGUI MINUS   &kp DEL
                               &kp LCTRL &mo 2 &kp RET   &kp SPACE &mo 3  &kp RCTRL
                         >;
                 };
