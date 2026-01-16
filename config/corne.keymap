@@ -74,6 +74,22 @@
                 , <&tog_off 1>
                 ;
         };
+        toggle_game_on: toggle_game_on {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&tog_on 3>
+                , <&tog_off 0>
+                ;
+        };
+        toggle_game_off: toggle_game_off {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&tog_on 0>
+                , <&tog_off 3>
+                ;
+        };
     };
 };
 
@@ -81,8 +97,8 @@
     conditional_layers {
         compatible = "zmk,conditional-layers";
         tri_layer {
-            if-layers = <2 3>;
-            then-layer = <4>;
+            if-layers = <3 4>;
+            then-layer = <5>;
         };
     };
 };
@@ -93,16 +109,16 @@
 
                 default_layer_windows {
 // -----------------------------------------------------------------------------------------
-// | ESC   |   Q LALT (hold) |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P RALT (hold)  | BSPC |
-// | TAB   |  A LSHIFT(hold) |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ; RSHIFT(hold) |  '   |
-// | CAPS  |  Z LCTRL(hold)  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  - RCTRL(hold)  | DEL  |
-//                      | GUI | LWR | ENT |   | SPC (Hold for layer 3) | RSE  | ALT |
-                        display-name = "Windows";
+// | esc   |   q lalt (hold) |  w  |  e  |  r  |  t  |   |  y  |  u   |  i  |  o  |  p ralt (hold)  | bspc |
+// | tab   |  a lshift(hold) |  s  |  d  |  f  |  g  |   |  h  |  j   |  k  |  l  |  ; rshift(hold) |  '   |
+// | caps  |  z lctrl(hold)  |  x  |  c  |  v  |  b  |   |  n  |  m   |  ,  |  .  |  - rctrl(hold)  | del  |
+//                      | gui | lwr | ent |   | spc  | rse  | alt |
+                        display-name = "windows";
                         bindings = <
-   &kp ESC   &hml LALT Q   &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &hmr RALT P      &kp BSPC
-   &kp TAB   &hml LSHIFT A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &hmr RSHIFT SEMI &kp SQT
-   &kp CAPS  &hml LCTRL Z  &kp X &kp C &kp V &kp B   &kp N &kp M  &kp COMMA &kp DOT &hmr RCTRL MINUS &kp DEL
-                           &kp LGUI &mo 2 &kp RET   &kp SPACE &mo 3 &kp RALT
+   &kp esc   &hml lalt q   &kp w &kp e &kp r &kp t   &kp y &kp u  &kp i     &kp o   &hmr ralt p      &kp bspc
+   &kp tab   &hml lshift a &kp s &kp d &kp f &kp g   &kp h &kp j  &kp k     &kp l   &hmr rshift semi &kp sqt
+   &kp caps  &hml lctrl z  &kp x &kp c &kp v &kp b   &kp n &kp m  &kp comma &kp dot &hmr rctrl minus &kp del
+                           &kp lgui &mo 3 &kp ret   &kp space &mo 4 &kp ralt
                         >;
                 };
                 default_layer_macos {
@@ -110,30 +126,43 @@
 // | ESC   |   Q LALT (hold) |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P RALT (hold)  | BSPC |
 // | TAB   |  A LSHIFT(hold) |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ; RSHIFT(hold) |  '   |
 // | CAPS  |  Z LGUI(hold)   |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  - RGUI(hold)   | DEL  |
-//                       |  LCTRL  | LWR | ENT |   | SPC (Hold for layer 3) | RSE  |  RCTRL  |
+//                       |  LCTRL  | LWR | ENT |   | SPC | RSE  |  RCTRL  |
                         display-name = "MacOS";
                         bindings = <
    &kp ESC   &hml LALT Q   &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &hmr RALT P      &kp BSPC
    &kp TAB   &hml LSHIFT A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &hmr RSHIFT SEMI &kp SQT
    &kp CAPS  &hml LGUI Z &kp X &kp C &kp V &kp B   &kp N &kp M  &kp COMMA &kp DOT &hmr RGUI MINUS   &kp DEL
-                              &kp LCTRL &mo 2 &kp RET   &kp SPACE &mo 3  &kp RCTRL
+                              &kp LCTRL &mo 3 &kp RET   &kp SPACE &mo 4  &kp RCTRL
+                        >;
+                };
+                default_layer_game {
+// -----------------------------------------------------------------------------------------
+// | esc   |  q  |  w  |  e  |  r  |  t  |   |  y  |  u   |  i  |  o  |  p ralt (hold)  | bspc |
+// | tab   |  a  |  s  |  d  |  f  |  g  |   |  h  |  j   |  k  |  l  |  ; rshift(hold) |  '   |
+// | alt   |  z  |  x  |  c  |  v  |  b  |   |  n  |  m   |  ,  |  .  |  - rctrl(hold)  | del  |
+//                      | alt | ctrl | spc |   | ret | lwr  | alt |
+                        display-name = "game";
+                        bindings = <
+   &kp esc   &kp q  &kp w &kp e &kp r &kp t   &trans &trans  &trans &trans &trans &trans
+   &kp tab   &kp a  &kp s &kp d &kp f &kp g   &trans &trans  &trans &trans &trans &trans
+   &kp lalt  &kp z  &kp x &kp c &kp v &kp b   &trans &trans  &trans &trans &trans &trans
+                           &kp kp lalt &kp lctrl &kp space   &kp ret &mo 3 &trans
                         >;
                 };
                 lower_layer {
 // -----------------------------------------------------------------------------------------
-// |      | BT1 | BT2  | BT3  | BT4 | BT5 |   |  ~  |  7  |  8  |  9  |  =  |       |
-// |      |     |      |  <   |  >  | WIN |   |  *  |  4  |  5  |  6  |  +  |   `   |
-// |      |     |      |      |     |MACOS|   |  /  |  1  |  2  |  3  |  -  | BTCLR |
+// |       | BT1 | BT2  | BT3  | BT4 | BT5 |   |  ~  |  7  |  8  |  9  |  =  |       |
+// |GAMEOFF|     |      |  <   |  >  | WIN |   |  *  |  4  |  5  |  6  |  +  |   `   |
+// |GAMEON |     |      |      |     |MACOS|   |  /  |  1  |  2  |  3  |  -  | BTCLR |
 //                    | GUI |     | ENT |   | SPC |     |  0  |
                         display-name = "Numbers";
                         bindings = <
-   &trans &bt BT_SEL 0  &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4   &kp TILDE  &kp N7  &kp N8  &kp N9  &kp EQUAL &trans
-   &trans     &trans        &trans   &kp LT       &kp GT       &toggle_win    &kp STAR   &kp N4  &kp N5  &kp N6  &kp PLUS  &kp GRAVE
-   &trans     &trans        &trans   &trans       &trans       &toggle_mac    &kp SLASH  &kp N1  &kp N2  &kp N3  &kp MINUS &bt BT_CLR
+   &trans           &bt BT_SEL 0  &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4   &kp TILDE  &kp N7  &kp N8  &kp N9  &kp EQUAL &trans
+   &toggle_game_off &trans        &trans       &kp LT       &kp GT       &toggle_win    &kp STAR   &kp N4  &kp N5  &kp N6  &kp PLUS  &kp GRAVE
+   &toggle_game_on  &trans        &trans       &trans       &trans       &toggle_mac    &kp SLASH  &kp N1  &kp N2  &kp N3  &kp MINUS &bt BT_CLR
                           	        &trans       &trans       &trans         &trans    &trans   &kp N0
                         >;
                 };
-
                 raise_layer {
 // -----------------------------------------------------------------------------------------
 // |      |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  (  |  )  |  ?  |      |
@@ -163,6 +192,7 @@
                     	    &trans  &trans  &trans    &trans   &trans     &trans
                         >;
                 };
+                
 
                 extra_1 {
                         status = "reserved";
