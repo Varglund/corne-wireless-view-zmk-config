@@ -129,9 +129,9 @@
 //                      | ALT | CTRL | SPC |   | ret | lwr  | alt |
                         display-name = "game";
                         bindings = <
-   &kp ESC   &kp q  &kp w &kp e &kp r &kp t   &trans &trans  &trans &trans &trans &trans
-   &kp TAB   &kp a  &kp s &kp d &kp f &kp g   &trans &trans  &trans &trans &trans &trans
-   &kp LALT  &kp z  &kp x &kp c &kp v &kp b   &trans &trans  &trans &trans &trans &trans
+   &kp ESC   &kp Q  &kp W &kp E &kp R &kp T   &trans &trans  &trans &trans &trans &trans
+   &kp TAB   &kp A  &kp S &kp D &kp F &kp G   &trans &trans  &trans &trans &trans &trans
+   &kp LALT  &kp Z  &kp X &kp C &kp V &kp B   &trans &trans  &trans &trans &trans &trans
                &kp LALT &kp LCTRL &kp SPACE   &kp RET &mo 3 &trans
                         >;
                 };
