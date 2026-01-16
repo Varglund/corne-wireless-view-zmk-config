@@ -62,7 +62,7 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&tog_on 1>
+                = <&tog_on 2>
                 , <&tog_off 0>
                 ;
         };
@@ -71,14 +71,14 @@
             #binding-cells = <0>;
             bindings
                 = <&tog_on 0>
-                , <&tog_off 1>
+                , <&tog_off 2>
                 ;
         };
         toggle_game_on: toggle_game_on {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings
-                = <&tog_on 3>
+                = <&tog_on 1>
                 , <&tog_off 0>
                 ;
         };
@@ -87,7 +87,7 @@
             #binding-cells = <0>;
             bindings
                 = <&tog_on 0>
-                , <&tog_off 3>
+                , <&tog_off 1>
                 ;
         };
     };
@@ -121,6 +121,20 @@
                            &kp lgui &mo 3 &kp ret   &kp space &mo 4 &kp ralt
                         >;
                 };
+                default_layer_game {
+// -----------------------------------------------------------------------------------------
+// | esc   |  q  |  w  |  e  |  r  |  t  |   |  y  |  u   |  i  |  o  |  p ralt (hold)  | bspc |
+// | tab   |  a  |  s  |  d  |  f  |  g  |   |  h  |  j   |  k  |  l  |  ; rshift(hold) |  '   |
+// | alt   |  z  |  x  |  c  |  v  |  b  |   |  n  |  m   |  ,  |  .  |  - rctrl(hold)  | del  |
+//                      | alt | ctrl | spc |   | ret | lwr  | alt |
+                        display-name = "game";
+                        bindings = <
+   &kp esc   &kp q  &kp w &kp e &kp r &kp t   &trans &trans  &trans &trans &trans &trans
+   &kp tab   &kp a  &kp s &kp d &kp f &kp g   &trans &trans  &trans &trans &trans &trans
+   &kp lalt  &kp z  &kp x &kp c &kp v &kp b   &trans &trans  &trans &trans &trans &trans
+               &kp lalt &kp lctrl &kp space   &kp ret &mo 3 &trans
+                        >;
+                };
                 default_layer_macos {
 // -----------------------------------------------------------------------------------------
 // | ESC   |   Q LALT (hold) |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P RALT (hold)  | BSPC |
@@ -133,20 +147,6 @@
    &kp TAB   &hml LSHIFT A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &hmr RSHIFT SEMI &kp SQT
    &kp CAPS  &hml LGUI Z &kp X &kp C &kp V &kp B   &kp N &kp M  &kp COMMA &kp DOT &hmr RGUI MINUS   &kp DEL
                               &kp LCTRL &mo 3 &kp RET   &kp SPACE &mo 4  &kp RCTRL
-                        >;
-                };
-                default_layer_game {
-// -----------------------------------------------------------------------------------------
-// | esc   |  q  |  w  |  e  |  r  |  t  |   |  y  |  u   |  i  |  o  |  p ralt (hold)  | bspc |
-// | tab   |  a  |  s  |  d  |  f  |  g  |   |  h  |  j   |  k  |  l  |  ; rshift(hold) |  '   |
-// | alt   |  z  |  x  |  c  |  v  |  b  |   |  n  |  m   |  ,  |  .  |  - rctrl(hold)  | del  |
-//                      | alt | ctrl | spc |   | ret | lwr  | alt |
-                        display-name = "game";
-                        bindings = <
-   &kp esc   &kp q  &kp w &kp e &kp r &kp t   &trans &trans  &trans &trans &trans &trans
-   &kp tab   &kp a  &kp s &kp d &kp f &kp g   &trans &trans  &trans &trans &trans &trans
-   &kp lalt  &kp z  &kp x &kp c &kp v &kp b   &trans &trans  &trans &trans &trans &trans
-                           &kp kp lalt &kp lctrl &kp space   &kp ret &mo 3 &trans
                         >;
                 };
                 lower_layer {
