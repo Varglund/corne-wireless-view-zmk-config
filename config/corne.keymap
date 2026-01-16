@@ -109,30 +109,30 @@
 
                 default_layer_windows {
 // -----------------------------------------------------------------------------------------
-// | esc   |   q lalt (hold) |  w  |  e  |  r  |  t  |   |  y  |  u   |  i  |  o  |  p ralt (hold)  | bspc |
-// | tab   |  a lshift(hold) |  s  |  d  |  f  |  g  |   |  h  |  j   |  k  |  l  |  ; rshift(hold) |  '   |
-// | caps  |  z lctrl(hold)  |  x  |  c  |  v  |  b  |   |  n  |  m   |  ,  |  .  |  - rctrl(hold)  | del  |
-//                      | gui | lwr | ent |   | spc  | rse  | alt |
-                        display-name = "windows";
+// | ESC   |   Q LALT (hold) |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P RALT (hold)  | BSPC |
+// | TAB   |  A LSHIFT(hold) |  S  |  D  |  F  |  G  |   |  H  |  J   |  K  |  L  |  ; RSHIFT(hold) |  '   |
+// | CAPS  |  Z LCTRL(hold)  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  - RCTRL(hold)  | DEL  |
+//                      | GUI | LWR | ENT |   | SPC  | RSE  | ALT |
+                        display-name = "Windows";
                         bindings = <
-   &kp esc   &hml lalt q   &kp w &kp e &kp r &kp t   &kp y &kp u  &kp i     &kp o   &hmr ralt p      &kp bspc
-   &kp tab   &hml lshift a &kp s &kp d &kp f &kp g   &kp h &kp j  &kp k     &kp l   &hmr rshift semi &kp sqt
-   &kp caps  &hml lctrl z  &kp x &kp c &kp v &kp b   &kp n &kp m  &kp comma &kp dot &hmr rctrl minus &kp del
-                           &kp lgui &mo 3 &kp ret   &kp space &mo 4 &kp ralt
+   &kp ESC   &hml LALT Q   &kp W &kp E &kp R &kp T   &kp Y &kp U  &kp I     &kp O   &hmr RALT P      &kp BSPC
+   &kp TAB   &hml LSHIFT A &kp S &kp D &kp F &kp G   &kp H &kp J  &kp K     &kp L   &hmr RSHIFT SEMI &kp SQT
+   &kp CAPS  &hml LCTRL Z  &kp X &kp C &kp V &kp B   &kp N &kp M  &kp COMMA &kp DOT &hmr RCTRL MINUS &kp DEL
+                           &kp LGUI &mo 3 &kp RET   &kp SPACE &mo 4 &kp RALT
                         >;
                 };
                 default_layer_game {
 // -----------------------------------------------------------------------------------------
-// | esc   |  q  |  w  |  e  |  r  |  t  |   |  y  |  u   |  i  |  o  |  p ralt (hold)  | bspc |
-// | tab   |  a  |  s  |  d  |  f  |  g  |   |  h  |  j   |  k  |  l  |  ; rshift(hold) |  '   |
-// | alt   |  z  |  x  |  c  |  v  |  b  |   |  n  |  m   |  ,  |  .  |  - rctrl(hold)  | del  |
-//                      | alt | ctrl | spc |   | ret | lwr  | alt |
+// | ESC   |  q  |  w  |  e  |  r  |  t  |   |  y  |  u   |  i  |  o  |  p RALT (hold)  | bspc |
+// | TAB   |  a  |  s  |  d  |  f  |  g  |   |  h  |  j   |  k  |  l  |  ; RSHIFT(hold) |  '   |
+// | ALT   |  z  |  x  |  c  |  v  |  b  |   |  n  |  m   |  ,  |  .  |  - RCTRL(hold)  | del  |
+//                      | ALT | CTRL | SPC |   | ret | lwr  | alt |
                         display-name = "game";
                         bindings = <
-   &kp esc   &kp q  &kp w &kp e &kp r &kp t   &trans &trans  &trans &trans &trans &trans
-   &kp tab   &kp a  &kp s &kp d &kp f &kp g   &trans &trans  &trans &trans &trans &trans
-   &kp lalt  &kp z  &kp x &kp c &kp v &kp b   &trans &trans  &trans &trans &trans &trans
-               &kp lalt &kp lctrl &kp space   &kp ret &mo 3 &trans
+   &kp ESC   &kp q  &kp w &kp e &kp r &kp t   &trans &trans  &trans &trans &trans &trans
+   &kp TAB   &kp a  &kp s &kp d &kp f &kp g   &trans &trans  &trans &trans &trans &trans
+   &kp LALT  &kp z  &kp x &kp c &kp v &kp b   &trans &trans  &trans &trans &trans &trans
+               &kp LALT &kp LCTRL &kp SPACE   &kp RET &mo 3 &trans
                         >;
                 };
                 default_layer_macos {
